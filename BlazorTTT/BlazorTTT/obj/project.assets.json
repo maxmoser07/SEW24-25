@@ -2064,11 +2064,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\BlazorTTT.csproj",
+      "projectUniqueName": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\BlazorTTT.csproj",
       "projectName": "BlazorTTT",
-      "projectPath": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\BlazorTTT.csproj",
+      "projectPath": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\BlazorTTT.csproj",
       "packagesPath": "C:\\Users\\mmose\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\obj\\",
+      "outputPath": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mmose\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OfbK/pgN9+FlFxo6XS+6/ZEuHlrdnxhyhc+YY1GlgSJjnLhgEYX7GX5wDKDmgZvCG59CxojBL0Hv8kRr8Re5+A==",
+  "dgSpecHash": "Q6V8u7PHPEVYhHrNfuvfjVZS/BHP+QhUg6h3fZsLF6K6UmXtPSBj5tfIj/PDVuW1cPM7uHpcvPLeKvDvp4YXtw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\BlazorTTT.csproj",
+  "projectFilePath": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\BlazorTTT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mmose\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.6\\microsoft.aspnetcore.authorization.8.0.6.nupkg.sha512",
     "C:\\Users\\mmose\\.nuget\\packages\\microsoft.aspnetcore.components\\8.0.6\\microsoft.aspnetcore.components.8.0.6.nupkg.sha512",
