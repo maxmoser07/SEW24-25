@@ -1,0 +1,176 @@
+﻿@page "/VGewinnt"
+<link href="css/vg.css" rel="stylesheet"/>
+<h3>Vier Gewinnt</h3>
+
+<div id="gui">
+    <div class="menuebar"> <!-- menue bar -->
+        <div>
+            <button class="inputbutton" @onclick="() => SetValue(0,0)"></button>
+            <button class="inputbutton" @onclick="() => SetValue(1,0)"></button>
+            <button class="inputbutton" @onclick="() => SetValue(2,0)"></button>
+            <button class="inputbutton" @onclick="() => SetValue(3,0)"></button>
+            <button class="inputbutton" @onclick="() => SetValue(4,0)"></button>
+            <button class="inputbutton" @onclick="() => SetValue(5,0)"></button>
+            <button class="inputbutton" @onclick="() => SetValue(6,0)"></button>
+        </div>    
+    </div>
+    <div class="gamefield"> <!-- game field -->
+        <div class="row">
+              <button class="displaybutton"><h1>@gamefield[5,0]</h1></button>
+            <button class="displaybutton"><h1>@gamefield[5,1]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[5,2]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[5,3]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[5,4]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[5,5]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[5,6]</h1></button>
+        </div>
+        <div class="row">
+            
+            <button class="displaybutton"><h1>@gamefield[4,0]</h1></button>
+            <button class="displaybutton"><h1>@gamefield[4,1]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[4,2]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[4,3]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[4,4]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[4,5]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[4,6]</h1></button>   
+        </div>
+        <div class="row">
+             
+            <button class="displaybutton"><h1>@gamefield[3,0]</h1></button>
+            <button class="displaybutton"><h1>@gamefield[3,1]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[3,2]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[3,3]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[3,4]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[3,5]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[3,6]</h1></button>  
+        </div>
+        <div class="row">
+             <button class="displaybutton"><h1>@gamefield[2,0]</h1></button>
+             <button class="displaybutton"><h1>@gamefield[2,1]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[2,2]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[2,3]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[2,4]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[2,5]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[2,6]</h1></button>
+        </div>
+        <div class="row">
+             <button class="displaybutton"><h1>@gamefield[1,0]</h1></button>
+             <button class="displaybutton"><h1>@gamefield[1,1]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[1,2]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[1,3]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[1,4]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[1,5]</h1></button>  
+             <button class="displaybutton"><h1>@gamefield[1,6]</h1></button>
+        </div>
+        <div class="row">
+            <button class="displaybutton"><h1>@gamefield[0,0]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[0,1]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[0,2]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[0,3]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[0,4]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[0,5]</h1></button>  
+            <button class="displaybutton"><h1>@gamefield[0,6]</h1></button>
+        </div>
+    </div>    
+</div>
+<h1>@winmessage</h1>
+@code
+{
+    int[,] gamefield = new int[6, 7];
+    bool playeriterator = true;
+    bool win = false;
+    string winmessage = "";
+    void SetValue(int x, int y)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            if (gamefield[i, x] == 0 && win == false)
+            {
+                if (playeriterator)
+                {
+                    gamefield[i, x] = 1;
+                    playeriterator = false;
+                }
+                else
+                {
+                    gamefield[i, x] = 2;
+                    playeriterator = true;
+                }
+                CheckWin();
+                break;
+            }
+        }
+    }
+    void CheckWin()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                if (gamefield[i, j] != 0)
+                {
+                    if (i + 3 < 6)
+                    {
+                        if (gamefield[i, j] == gamefield[i + 1, j] && gamefield[i, j] == gamefield[i + 2, j] && gamefield[i, j] == gamefield[i + 3, j])
+                        {
+                            win = true;
+                            if (gamefield[i, j] == 1)
+                            {
+                                winmessage = "Player 1 wins!";
+                            }
+                            else
+                            {
+                                winmessage = "Player 2 wins!";
+                            }
+                        }
+                    }
+                    if (j + 3 < 7)
+                    {
+                        if (gamefield[i, j] == gamefield[i, j + 1] && gamefield[i, j] == gamefield[i, j + 2] && gamefield[i, j] == gamefield[i, j + 3])
+                        {
+                            win = true;
+                            if (gamefield[i, j] == 1)
+                            {
+                                winmessage = "Player 1 wins!";
+                            }
+                            else
+                            {
+                                winmessage = "Player 2 wins!";
+                            }
+                        }
+                    }
+                    if (i + 3 < 6 && j + 3 < 7)
+                    {
+                        if (gamefield[i, j] == gamefield[i + 1, j + 1] && gamefield[i, j] == gamefield[i + 2, j + 2] && gamefield[i, j] == gamefield[i + 3, j + 3])
+                        {
+                            win = true;
+                            if (gamefield[i, j] == 1)
+                            {
+                                winmessage = "Player 1 wins!";
+                            }
+                            else
+                            {
+                                winmessage = "Player 2 wins!";
+                            }
+                        }
+                    }
+                    if (i - 3 >= 0 && j + 3 < 7)
+                    {
+                        if (gamefield[i, j] == gamefield[i - 1, j + 1] && gamefield[i, j] == gamefield[i - 2, j + 2] && gamefield[i, j] == gamefield[i - 3, j + 3])
+                        {
+                            win = true;
+                            if (gamefield[i, j] == 1)
+                            {
+                                winmessage = "Player 1 wins!";
+                            }
+                            else
+                            {
+                                winmessage = "Player 2 wins!";
+                            }
+                        }
+                    }
+    }
+}
+}
+        }
+}

@@ -1,0 +1,96 @@
+﻿@page "/TTT"
+<PageTitle>TicTacToe</PageTitle>
+<link href="css/ttt.css" rel="stylesheet" />
+<h3>TTT</h3>
+
+<div class="fldiv">
+    <div class="sldiv">
+        <button class="tttbutton" @onclick="() => Set(0,0)"><h1>@fieldplay[0,0]</h1></button>
+        <button class="tttbutton" @onclick="() => Set(0,1)"><h1>@fieldplay[0,1]</h1></button>
+        <button class="tttbutton" @onclick="() => Set(0,2)"><h1>@fieldplay[0,2]</h1></button>
+    </div>
+    <div class="sldiv">
+        <button class="tttbutton" @onclick="() => Set(1,0)"><h1>@fieldplay[1,0]</h1></button>
+        <button class="tttbutton" @onclick="() => Set(1,1)"><h1>@fieldplay[1,1]</h1></button>
+        <button class="tttbutton" @onclick="() => Set(1,2)"><h1>@fieldplay[1,2]</h1></button>
+    </div>
+    <div class="sldiv">
+        <button class="tttbutton" @onclick="() => Set(2,0)"><h1>@fieldplay[2,0]</h1></button>
+        <button class="tttbutton" @onclick="() => Set(2,1)"><h1>@fieldplay[2,1]</h1></button>
+        <button class="tttbutton" @onclick="() => Set(2,2)"><h1>@fieldplay[2,2]</h1></button>
+    </div>
+</div>
+<h1>@playerturn</h1>
+@code {
+    string playerturn = "Player X is to play";
+    bool won = false; 
+    int[,] fieldcalc = new int[3,3];
+    string[,] fieldplay = new string[3,3];
+    int i = 0;
+    private void Set(int x,int y)
+    {
+        if (i % 2 == 0 && fieldcalc[x, y] == 0 && !won)
+        {
+            fieldcalc[x, y] = 1;
+            fieldplay[x, y] = "X";
+            i++;
+            playerturn = "Player O is to play";
+        }
+        else if (i % 2 == 1 && fieldcalc[x, y] == 0 && !won)
+        {
+            fieldcalc[x, y] = 2;
+            fieldplay[x, y] = "O";
+            i++;
+            playerturn = "Player X is to play";
+        }
+        CheckWin(fieldcalc);
+    }
+    
+    private void CheckWin(int[,] field)
+    {
+        if (field[0, 0] == field[0, 1] && field[0, 1] == field[0, 2] && field[0, 0] != 0)
+        {
+            playerturn = "Player " + fieldplay[0, 0] + " wins!";
+            won = true;
+        }
+        else if (field[1, 0] == field[1, 1] && field[1, 1] == field[1, 2] && field[1, 0] != 0)
+        {
+            playerturn = "Player " + fieldplay[1, 0] + " wins!";
+            won = true;
+        }
+        else if (field[2, 0] == field[2, 1] && field[2, 1] == field[2, 2] && field[2, 0] != 0)
+        {
+            playerturn = "Player " + fieldplay[2, 0] + " wins!";
+            won = true;
+        }
+        else if (field[0, 0] == field[1, 0] && field[1, 0] == field[2, 0] && field[0, 0] != 0)
+        {
+            playerturn = "Player " + fieldplay[0, 0] + " wins!";
+            won = true;
+        }
+        else if (field[0, 1] == field[1, 1] && field[1, 1] == field[2, 1] && field[0, 1] != 0)
+        {
+            playerturn = "Player " + fieldplay[0, 1] + " wins!";
+            won = true;
+        }
+        else if (field[0, 2] == field[1, 2] && field[1, 2] == field[2, 2] && field[0, 2] != 0)
+        {
+            playerturn = "Player " + fieldplay[0, 2] + " wins!";
+            won = true;
+        }
+        else if (field[0, 0] == field[1, 1] && field[1, 1] == field[2, 2] && field[0, 0] != 0)
+        {
+            playerturn = "Player " + fieldplay[0, 0] + " wins!";
+            won = true;
+        }
+        else if (field[0, 2] == field[1, 1] && field[1, 1] == field[2, 0] && field[0, 2] != 0)
+        {
+            playerturn = "Player " + fieldplay[0, 2] + " wins!";
+            won = true;
+        }
+        else if (i == 9)
+        {
+            playerturn = "Draw!";
+        }
+    }
+}
