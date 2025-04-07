@@ -1,0 +1,46 @@
+﻿@using System.Diagnostics
+@page "/FünfGewinnt"
+
+<PageTitle>FünfGewinnt</PageTitle>
+
+<h1>This is FünfGewinnt</h1>
+<table class="connect4-grid">
+    @for (int y = 0; y < 15; y++)
+    {
+        <tr>
+            @for (int x = 0; x < 15; x++)
+            {
+                int localX = x; // Create local copies
+                int localY = y;
+                <td @onclick="() => Set(localX, localY)">
+                    @Conn5[localX,localY]
+                </td>
+            }
+        </tr>
+    }
+</table>
+<h1>Turn: @Conn5.NextPlayer</h1>
+<h1>Winner: @Conn5.Winner</h1>
+<button class="btn btn-primary" @onclick="reset">reset</button>
+
+
+
+
+@code{
+    
+    Connect5_Flags Conn5 = new();//!!! Achtung darf nicht gleich wie die Page heißen sonst böse!!!!!!!!!!!
+
+    private void Set(int x, int y)
+    {
+        if (Conn5.Winner == GameState.Going.ToString())
+        {
+            Conn5.Set(x, y);
+        }
+    }
+
+    public void reset()
+    {
+        Conn5 = new();
+    }
+
+}

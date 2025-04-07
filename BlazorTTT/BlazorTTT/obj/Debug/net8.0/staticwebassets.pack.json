@@ -1,51 +1,55 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\compressed\\hjsh4dfnsy.gz",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\compressed\\hjsh4dfnsy.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorTTT.styles.css",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\scopedcss\\bundle\\BlazorTTT.styles.css",
       "PackagePath": "staticwebassets\\BlazorTTT.styles.css"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\ttt.css",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\fg.css",
+      "PackagePath": "staticwebassets\\css\\fg.css"
+    },
+    {
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\ttt.css",
       "PackagePath": "staticwebassets\\css\\ttt.css"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\vg.css",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\css\\vg.css",
       "PackagePath": "staticwebassets\\css\\vg.css"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\icon-192.png",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\index.html",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\mmose\\OneDrive - HTL Krems\\Schule\\Desktop\\SCHULE\\24-25\\SEW\\BlazorTTT\\BlazorTTT\\wwwroot\\sample-data\\weather.json",
+      "Id": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {
