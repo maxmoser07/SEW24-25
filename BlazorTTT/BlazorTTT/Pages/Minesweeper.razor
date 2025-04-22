@@ -1,0 +1,25 @@
+﻿@page "/Minesweeper"
+
+<h3>Minesweeper</h3>
+<div id="game">
+    <div id="field"> 
+        @for (int r = 0; r < ROWS; r++)
+        {
+            <div>
+                @for (int c = 0; c < COLS; c++)
+                {
+                    <button class="btn btn-primary btn-size">@_game[c,r]</button>
+                }
+            </div>
+        }
+</div>    
+    <button btn btn-primary @onclick="() => _game = new MineSweeper(COLS,ROWS)">Reset</button>
+    <br/>
+    <h1>Winner: </h1>
+</div>
+
+@code { //💣
+    static int COLS = 5;
+    static int ROWS = 3;
+    private MineSweeper _game = new(COLS,ROWS);
+}

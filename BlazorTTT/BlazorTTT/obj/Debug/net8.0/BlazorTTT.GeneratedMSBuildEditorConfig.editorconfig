@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/mmose/SEW24-25/BlazorTTT/BlazorTTT/Pages/Minesweeper.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWluZXN3ZWVwZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/mmose/SEW24-25/BlazorTTT/BlazorTTT/Pages/TTT.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVFRULnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
