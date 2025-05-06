@@ -5,19 +5,21 @@
     <div id="field"> 
         @for (int r = 0; r < ROWS; r++)
         {
-            int locr = r;
             <div>
                 @for (int c = 0; c < COLS; c++)
                 {
-                    int locc = c;
-                    
-                    <button class="btn btn-primary btn-size">@_game[c,r]</button>
+                    <button class="btn btn-primary btn-size" @onclick="() => _game.TryField(c, r)">
+                        @_game.GetFieldDisplay(c, r)
+                    </button>
+
                 }
             </div>
         }
 </div>    
     <button btn btn-primary @onclick="() => _game = new MineSweeper(COLS,ROWS)">Reset</button>
     <button btn btn-primary @onclick="() => _game.SetBombs()">Set random bombs</button>
+    <button btn btn-primary @onclick="() => _game.Reveal()">Reveal</button>
+    <button btn btn-primary  @onclick="() => _game.TryField(5,5)">weq</button>
     <br/>
     <h1>Winner: </h1>
 </div>
@@ -26,5 +28,5 @@
     static int COLS = 20;
     static int ROWS = 20;
     private MineSweeper _game = new(COLS,ROWS);
-    
+    public string this[int c, int r] => _game.GetFieldDisplay(c, r);
 }

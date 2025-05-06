@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "BlazorTTT",
   "resources": {
-    "hash": "sha256-/Tamz8FlTZ1LEZuGL78KA3CrpbUPg2hMfxhCgnmgfKA=",
+    "hash": "sha256-uifK3BnODntqJ8qjGM35uzQVI0g7CMWoheW1DsQ0gcQ=",
     "jsModuleNative": {
       "dotnet.native.8.0.6.ossqf1jdtp.js": "sha256-YU6M9+jtDVnB8/wtrgIndOstzNh778Ls8g9XnbjorSk="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-masKveCdoRSahF99doEQk7H3YN2wHLVIE4M/Zu8OoD8=",
       "netstandard.wasm": "sha256-z1EJOmgVhSpTopn7Tek/0P//MKGF1I3NUD/sh4oLnwY=",
       "System.Private.CoreLib.wasm": "sha256-tuIWpR30u0OoEVtv4pXZ47mEpI2AmFBIyYFPnqDZZfw=",
-      "BlazorTTT.wasm": "sha256-JOzx1N9oTEDQWatIDUzyK5Mjxa7ZEqRNWSCssiyGCxk="
+      "BlazorTTT.wasm": "sha256-0x7yZzk838gFRYY9qNDyUG+uG0VxpxSrFDkzcVGka7I="
     },
     "pdb": {
-      "BlazorTTT.pdb": "sha256-ymYnvbp6tknSoXvrBk+hSPzHGB7I1OGINe7aH4Mck/g="
+      "BlazorTTT.pdb": "sha256-mzexKFntXeFezz4/ldrl34+sjv+24usjCiUUU2FmlNk="
     }
   },
   "cacheBootResources": true,
