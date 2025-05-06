@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "R1pGDh0SPq0NohOswAIFytHswLgF0YMQzGwIqmXnAt9CsNlezBrkHdMjMohL7rkzoqa41Qmqz8CB+7OuboNojw==",
+  "dgSpecHash": "BeSyjo7DVYmls0RPRdpJfqfbRXePpoUS6JcGy55WJltMW1FJw+wje93cDn2GEeK98X7jZVn7wJ8YqwsV7ciURg==",
   "success": true,
   "projectFilePath": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\DBBlazor\\DBBlazor.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mmose\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\mmose\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\mmose\\.nuget\\packages\\mysqlconnector\\2.4.0\\mysqlconnector.2.4.0.nupkg.sha512"
+  ],
   "logs": []
 }
