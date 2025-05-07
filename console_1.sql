@@ -15,3 +15,49 @@ db.emps.find({$and:[{dept_id:{$ne:10}},{dept_id:{$ne:30}}]}, {_id:0});
 
 // 7. Beispiel
 db.emps.find({$or:[{SAL:{$lte: 1250}},{SAL:{$gte: 1600}}]},{_id:0});
+
+// 8. Beispiel
+db.emps.find({
+  JOB: { $nin: ["MANAGER", "PRESIDENT"] }
+}, {
+  ENAME: 1, JOB: 1, _id: 0
+});
+// 9. Beispiel
+db.emps.find({
+  ENAME: { $regex: /^.{2}A/i }
+}, {
+  ENAME: 1, _id: 0
+});
+// 10. Beispiel
+db.emps.find({
+  COMM: { $ne: null }
+}, {
+  id: 1, ENAME: 1, JOB: 1, COMM: 1, _id: 0
+});
+// 11. Beispiel
+db.emps.find({}, {
+  ENAME: 1, COMM: 1, _id: 0
+}).sort({ COMM: 1 });
+// 12. Beispiel
+db.emps.find({
+  JOB: { $nin: ["MANAGER", "PRESIDENT"] }
+}).sort({ dept_id: 1, HIREDATE: -1 });
+// 13. Beispiel
+db.emps.find({
+  ENAME: { $regex: /^.{6}$/ }
+}, {
+  ENAME: 1, _id: 0
+});
+// 14. Beispiel
+db.emps.aggregate([
+  { $match: { dept_id: 30 } },
+  {
+    $project: {
+      _id: 0,
+      "Mitarbeiter und Tätigkeit": {
+        $concat: ["$ENAME", " - ", "$JOB"]
+      }
+    }
+  }
+]);
+// 15. Beispiel
