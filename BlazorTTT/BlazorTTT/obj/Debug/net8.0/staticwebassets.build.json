@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y7Jblz6RqvAKqzWPZLc1Cqt1Mv7/qPFUN0Wi/FEd+w0=",
+  "Hash": "iDg3H7Y/FiV7IbU9Y7CvtjcVGIqsWWDbbDwqgfedxu8=",
   "Source": "BlazorTTT",
   "BasePath": "/",
   "Mode": "Root",
@@ -794,6 +794,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\webcil\\mscorlib.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\MySqlConnector.wasm",
+      "SourceId": "BlazorTTT",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MySqlConnector.wasm",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\webcil\\MySqlConnector.wasm"
     },
     {
       "Identity": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\netstandard.wasm",
@@ -5848,6 +5867,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\System.Xml.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\compressed\\j65p8wp06s.gz",
+      "SourceId": "BlazorTTT",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MySqlConnector.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\MySqlConnector.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\bin\\Debug\\net8.0\\wwwroot\\_framework\\MySqlConnector.wasm"
     },
     {
       "Identity": "C:\\Users\\mmose\\SEW24-25\\BlazorTTT\\BlazorTTT\\obj\\Debug\\net8.0\\compressed\\j8ldfbm3qj.gz",

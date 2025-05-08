@@ -2061,3 +2061,8 @@ C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\obj\Debug\net8.0\BlazorTTT.dll
 C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\obj\Debug\net8.0\refint\BlazorTTT.dll
 C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\obj\Debug\net8.0\BlazorTTT.pdb
 C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\obj\Debug\net8.0\ref\BlazorTTT.dll
+C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\bin\Debug\net8.0\wwwroot\_framework\MySqlConnector.wasm
+C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\bin\Debug\net8.0\wwwroot\_framework\MySqlConnector.wasm.gz
+C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\bin\Debug\net8.0\MySqlConnector.dll
+C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\obj\Debug\net8.0\webcil\MySqlConnector.wasm
+C:\Users\mmose\SEW24-25\BlazorTTT\BlazorTTT\obj\Debug\net8.0\compressed\j65p8wp06s.gz
