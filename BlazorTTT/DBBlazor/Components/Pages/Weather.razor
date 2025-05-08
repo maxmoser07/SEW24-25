@@ -2,7 +2,6 @@
 @using System.Net.Http.Json
 @using MySqlConnector
 @attribute [StreamRendering]
-@inject HttpClient Http
 
 <PageTitle>Weather</PageTitle>
 
@@ -84,7 +83,7 @@ else
     }
 
     private List<Test> entries = new List<Test>();
-    private MySqlConnection _connection = new("server=localhost;user=root;password=insy;database=demo");
+    private MySqlConnection _connection = new("server=localhost;user=root;password=insy;database=mydb");
 
     protected override void OnInitialized()
     {
