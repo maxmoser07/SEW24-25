@@ -55,9 +55,10 @@ else
         }
         </tbody>
     </table>
-    <button class="btn btn-primary" @onclick="">Add</button>
-    <button class="btn btn-primary" @onclick="">Delete</button>
-    <button class="btn btn-primary" @onclick="">edit</button>
+    <button class="btn btn-primary" @onclick="Add">Add</button>
+    <button class="btn btn-primary" @onclick="Delete">Delete</button>
+    <button class="btn btn-primary" @onclick="Edit">edit</button>
+    
 }
 
 @code {
@@ -90,16 +91,53 @@ else
 
     protected override void OnInitialized()
     {
+        LoadEntries();
+    }
+    private void LoadEntries()
+    {
+        entries.Clear();
         _connection.Open();
         using var command = new MySqlCommand("SELECT * FROM test", _connection);
         using var reader = command.ExecuteReader();
         while (reader.Read())
         {
-            int value1 = reader.GetInt32(0);
-            string value2 = reader.GetString(1);
-            entries.Add(new Test { Id = value1, Value = value2 });
+            int id = reader.GetInt32(0);
+            string value = reader.GetString(1);
+            entries.Add(new Test { Id = id, Value = value });
         }
         _connection.Close();
+    }
+
+    private void Add()
+    {
+        _connection.Open();
+        using var command = new MySqlCommand("INSERT INTO test (id,value) VALUES (1,'test1');", _connection);
+        command.ExecuteNonQuery();
+        _connection.Close();
+
+        LoadEntries();      // Reload from DB
+        StateHasChanged();  // Tell UI to re-render
+    }
+    private void Delete()
+    {
+        _connection.Open();
+        using var command = new MySqlCommand("DELETE FROM test WHERE id = 1", _connection);
+        command.ExecuteNonQuery();
+        _connection.Close();
+
+        LoadEntries();
+        StateHasChanged();
+    }
+
+    private void Edit()
+    {
+        _connection.Open();
+        using var command = new MySqlCommand("UPDATE test SET value = 'edited' WHERE id = 1", _connection);
+        command.ExecuteNonQuery();
+        _connection.Close();
+
+        LoadEntries();
+        StateHasChanged();
     }
 
     private class Test
