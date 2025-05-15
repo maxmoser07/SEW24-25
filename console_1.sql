@@ -60,4 +60,58 @@ db.emps.aggregate([
     }
   }
 ]);
-// 15. Beispiel
+// 16. Beispiel
+db.emps.aggregate([
+  {
+    $project: {
+      _id: 0,
+      ENAME: 1,
+      MONTHLY: "$SAL",
+      DAILY: { $round: [{ $divide: ["$SAL", 22] }, 2] },
+      HOURLY: { $round: [{ $divide: ["$SAL", 176] }, 2] }
+    }
+  }
+]);
+// 17. Beispiel
+db.emps.aggregate([
+  {
+    $group: {
+      _id: null,
+      totalMonthlySalary: { $sum: "$SAL" }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      totalMonthlySalary: 1
+    }
+  }
+]);
+// 19. Beispiel
+db.emps.aggregate([
+  { $match: { dept_id: 30 } },
+  {
+    $group: {
+      _id: null,
+      mitGehalt: { $sum: { $cond: [{ $gt: ["$SAL", 0] }, 1, 0] } },
+      mitProvision: { $sum: { $cond: [{ $ifNull: ["$COMM", false] }, 1, 0] } }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      mitGehalt: 1,
+      mitProvision: 1
+    }
+  }
+]);
+// 20. Beispiel
+
+// 21. Beispiel
+db.emps.aggregate([
+  {
+    $group: {
+      _id: "parent_id"
+    } }
+]);
+// 22. Beispiel
