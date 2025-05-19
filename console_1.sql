@@ -115,3 +115,136 @@ db.emps.aggregate([
     } }
 ]);
 // 22. Beispiel
+db.emps.aggregate([
+  { $match: { dept_id: 30 } },
+  {
+    $project: {
+      SAL: 1,
+      COMM: { $ifNull: ["$COMM", 0] }
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      avgSAL: { $avg: "$SAL" },
+      sumSAL: { $sum: "$SAL" },
+      avgCOMM: { $avg: "$COMM" },
+      sumCOMM: { $sum: "$COMM" }
+    }
+  }
+]);
+// 23. Beispiel
+db.emps.aggregate([
+  {
+    $match: {
+      dept_id: 30,
+      JOB: { $nin: ["MANAGER", "PRESIDENT"] }
+    }
+  },
+  {
+    $group: { _id: "$JOB" }
+  },
+  {
+    $count: "Anzahl_Berufe"
+  }
+]);
+// 24. Beispiel
+db.emps.aggregate([
+  {
+    $group: {
+      _id: "$dept_id",
+      count: { $sum: 1 }
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      avgMitarbeiter: { $avg: "$count" }
+    }
+  }
+]);
+// 25. Beispiel
+db.emps.find({
+  JOB: { $in: ["MANAGER", "PRESIDENT"] }
+});
+// 26. Beispiel
+db.emps.find({
+  COMM: { $exists: true, $ne: null },
+  $expr: { $gt: ["$COMM", { $divide: ["$SAL", 4] }] }
+}, {
+  ENAME: 1,
+  JOB: 1,
+  COMM: 1
+});
+// 27. Beispiel
+db.emps.aggregate([
+  {
+    $project: {
+      ENAME: 1,
+      total: { $add: ["$SAL", { $ifNull: ["$COMM", 0] }] }
+    }
+  },
+  { $sort: { total: 1 } },
+  { $limit: 1 }
+]);
+// 28. Beispiel
+db.emps.find().sort({ HIREDATE: 1 }).limit(1);
+// 29. Beispiel
+db.emps.aggregate([
+  {
+    $group: {
+      _id: { dept_id: "$dept_id", JOB: "$JOB" },
+      count: { $sum: 1 }
+    }
+  }
+]);
+// 30. Beispiel
+db.emps.aggregate([
+  {
+    $project: {
+      dept_id: 1,
+      income: { $add: ["$SAL", { $ifNull: ["$COMM", 0] }] }
+    }
+  },
+  {
+    $group: {
+      _id: "$dept_id",
+      totalIncome: { $sum: "$income" }
+    }
+  },
+  { $sort: { totalIncome: -1 } }
+]);
+// 34. Beispiel
+db.emps.aggregate([
+  { $match: { dept_id: 30 } },
+  {
+    $project: {
+      SAL: 1,
+      COMM: { $ifNull: ["$COMM", 0] }
+    }
+  },
+  {
+    $group: {
+      _id: null,
+      minSAL: { $min: "$SAL" },
+      maxSAL: { $max: "$SAL" },
+      avgSAL: { $avg: "$SAL" },
+      countSAL: { $sum: 1 },
+      minCOMM: { $min: "$COMM" },
+      maxCOMM: { $max: "$COMM" },
+      avgCOMM: { $avg: "$COMM" },
+      countCOMM: { $sum: 1 }
+    }
+  }
+]);
+// 35. Beispiel
+db.emps.aggregate([
+  {
+    $group: {
+      _id: "$dept_id",
+      minSAL: { $min: "$SAL" },
+      maxSAL: { $max: "$SAL" },
+      avgSAL: { $avg: "$SAL" }
+    }
+  }
+]);
