@@ -48,3 +48,9 @@ foreach (var document in list)
         Console.WriteLine(kvp.Name + ": " + kvp.Value);
     }
 }
+BsonDocument doc1 = new BsonDocument
+{
+    { "_id", ObjectId.GenerateNewId() },
+    { "name", "max" },
+};
+collection.InsertOne(doc1);
