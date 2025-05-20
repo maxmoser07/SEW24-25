@@ -48,9 +48,13 @@ foreach (var document in list)
         Console.WriteLine(kvp.Name + ": " + kvp.Value);
     }
 }
+
 BsonDocument doc1 = new BsonDocument
 {
     { "_id", ObjectId.GenerateNewId() },
-    { "name", "max" },
+    { "name", "flo" },
 };
 collection.InsertOne(doc1);
+var filter = Builders<BsonDocument>.Filter.Eq("name", "max");
+var result = await collection.DeleteOneAsync(filter);
+Console.WriteLine($"Deleted Count: {result.DeletedCount}");
