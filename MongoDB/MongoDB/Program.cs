@@ -52,9 +52,14 @@ foreach (var document in list)
 BsonDocument doc1 = new BsonDocument
 {
     { "_id", ObjectId.GenerateNewId() },
-    { "name", "flo" },
+    { "name", "max" },
 };
 collection.InsertOne(doc1);
 var filter = Builders<BsonDocument>.Filter.Eq("name", "max");
-var result = await collection.DeleteOneAsync(filter);
-Console.WriteLine($"Deleted Count: {result.DeletedCount}");
+var update = Builders<BsonDocument>.Update.Set("name", "flo");
+
+var result = await collection.UpdateOneAsync(filter, update);
+Console.WriteLine($"Matched: {result.MatchedCount}, Modified: {result.ModifiedCount}");
+var filter1 = Builders<BsonDocument>.Filter.Eq("name", "max");
+var result1 = await collection.DeleteOneAsync(filter);
+Console.WriteLine($"Deleted Count: {result1.DeletedCount}");
