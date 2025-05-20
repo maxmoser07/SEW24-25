@@ -18,8 +18,8 @@ foreach (var propertyInfo in typeof(Person).GetProperties())
 }
 */
 var client = new MongoClient("mongodb://localhost:27017");
-var database = client.GetDatabase("3chitmongodb");
-var collection = database.GetCollection<BsonDocument>("emps");
+var database = client.GetDatabase("bombababa");
+var collection = database.GetCollection<BsonDocument>("Beispiel");
 
 var list = await collection.Find(new BsonDocument()).ToListAsync();
 
