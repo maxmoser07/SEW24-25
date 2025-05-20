@@ -48,18 +48,19 @@ foreach (var document in list)
         Console.WriteLine(kvp.Name + ": " + kvp.Value);
     }
 }
-
+//Add new entry
 BsonDocument doc1 = new BsonDocument
 {
     { "_id", ObjectId.GenerateNewId() },
     { "name", "max" },
 };
 collection.InsertOne(doc1);
+//Update entry
 var filter = Builders<BsonDocument>.Filter.Eq("name", "max");
 var update = Builders<BsonDocument>.Update.Set("name", "flo");
-
 var result = await collection.UpdateOneAsync(filter, update);
 Console.WriteLine($"Matched: {result.MatchedCount}, Modified: {result.ModifiedCount}");
+//delete entry
 var filter1 = Builders<BsonDocument>.Filter.Eq("name", "max");
 var result1 = await collection.DeleteOneAsync(filter);
 Console.WriteLine($"Deleted Count: {result1.DeletedCount}");
