@@ -25,5 +25,26 @@ var list = await collection.Find(new BsonDocument()).ToListAsync();
 
 foreach (var document in list)
 {
-    Console.WriteLine(document);
+    //Console.WriteLine(document);
+    string doc = document.ToString();
+    dynamic person = JsonConvert.DeserializeObject(doc);
+    Console.WriteLine("\n------");
+    foreach (var person1 in person)
+    {
+        foreach (var propertyInfo in person1.GetType().GetProperties())
+        {
+            if (propertyInfo.Name == "Name" || propertyInfo.Name == "Value")
+            {
+                string n = propertyInfo.Name;
+                var propertyName = propertyInfo.Name;
+                var propertyValue = propertyInfo.GetValue(person1);
+                Console.WriteLine($"{propertyName}: {propertyValue}");
+            }
+        }
+    }
+
+    foreach (var kvp in document)
+    {
+        Console.WriteLine(kvp.Name + ": " + kvp.Value);
+    }
 }
