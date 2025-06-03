@@ -2,7 +2,7 @@
 
 public class Person
 {
-    int id {get; set;}
-    string firstName { get; set; }
-    string lastName { get; set; }
+    public int id { get; set; }
+    public string firstName { get; set; }
+    public string lastName { get; set; }
 }
