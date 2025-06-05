@@ -1,0 +1,91 @@
+﻿@page "/"
+@using MySqlConnector
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        @foreach(var column in new[] { "id", "firstName", "lastName" })
+        {
+            <th>@column</th>
+        }
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var person in persons)
+    {
+        <tr>
+            @foreach (var column in person.GetType().GetProperties())
+            {
+                var value = column.GetValue(person);
+                if (value != null)
+                {
+                    <td>@value</td>
+                }
+                else
+                {
+                    <td>NULL</td>
+                }
+            }
+            @{
+                var id = person.id;
+            }
+            <td>
+                <button @onclick="() => DeletePerson(person.id)">Delete</button>
+                <button @onclick="() => Console.WriteLine(id)">Edit</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@code{
+    private List<Person> persons = new();
+    string connectionString = "server=localhost;user=root;password=insy;database=mydb";
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var connection = new MySqlConnection(connectionString);
+        await connection.OpenAsync();
+
+        string query = "SELECT id, firstName, lastName FROM Person";
+        using var command = new MySqlCommand(query, connection);
+        using var reader = await command.ExecuteReaderAsync();
+
+        while (await reader.ReadAsync())
+        {
+            persons.Add(new Person
+            {
+                id = reader.GetInt32("id"),
+                firstName = reader.GetString("firstName"),
+                lastName = reader.GetString("lastName")
+            });
+        }
+    }
+    private async Task DeletePerson(int id)
+    {
+        try
+        {
+            using var connection = new MySqlConnection(connectionString);
+            await connection.OpenAsync();
+
+            string deleteQuery = "DELETE FROM Person WHERE id = @id";
+            using var command = new MySqlCommand(deleteQuery, connection);
+            command.Parameters.AddWithValue("@id", id);
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            if (affectedRows > 0)
+            {
+                persons.RemoveAll(p => p.id == id);
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Löschen: {ex.Message}");
+        }
+    }
+}

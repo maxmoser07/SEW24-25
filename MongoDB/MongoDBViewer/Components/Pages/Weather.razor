@@ -1,0 +1,88 @@
+﻿@page "/weather"
+@attribute [StreamRendering]
+@using MongoDB.Driver;
+@using MongoDB.Bson;
+<PageTitle>Mongo</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            @foreach(var column in columns)
+            {
+                <th>@column</th>
+            }
+            <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var document in list)
+        {
+            <tr>
+                @foreach (var column in columns)
+                {
+                    if (document.TryGetValue(column, out var value) && !value.IsBsonNull)
+                    {
+                        <td>@value</td>
+                    }
+                    else
+                    {
+                        <td>NULL</td>
+                    }
+                }
+
+                @{
+                    var id = document["_id"].AsObjectId;
+                }
+                <td>
+                    <button @onclick="() => DeleteDocument(id)">Delete</button>
+                </td>
+            </tr>
+        }
+
+
+
+
+        </tbody>
+    </table>
+<button @onclick="() => TestClick()">Test</button>
+
+@code {
+    MongoClient client = new MongoClient("mongodb://localhost:27017");
+    List<BsonDocument> list = new List<BsonDocument>();
+    HashSet<string> columns = new HashSet<string>();
+    protected override async Task OnInitializedAsync()
+    {
+        var database = client.GetDatabase("bombababa");
+        var collection = database.GetCollection<BsonDocument>("Beispiel");  
+      
+        list = collection.AsQueryable().ToList();
+        foreach (var document in list)
+        {
+            foreach (var kvp in document)
+            {
+                columns.Add(kvp.Name);
+            }
+        }
+
+    }
+    private async Task DeleteDocument(ObjectId id)
+    {
+        Console.WriteLine($"Delete called for id: {id}"); // Debug line
+
+        var database = client.GetDatabase("bombababa");
+        var collection = database.GetCollection<BsonDocument>("Beispiel");
+        await collection.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("_id", id));
+        list.RemoveAll(doc => doc["_id"] == id);
+
+        await InvokeAsync(StateHasChanged);
+    }
+    private void TestClick()
+    {
+        Console.WriteLine("Button was clicked!");
+    }
+
+}
