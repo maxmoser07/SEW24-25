@@ -3,7 +3,17 @@
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
+<h3>Add New Person</h3>
 
+<div class="mb-3">
+    <input placeholder="First Name" @bind="newFirstName" class="form-control" />
+</div>
+<div class="mb-3">
+    <input placeholder="Last Name" @bind="newLastName" class="form-control" />
+</div>
+<div class="mb-3">
+    <button class="btn btn-primary" @onclick="AddPerson">Add</button>
+</div>
 <table class="table">
     <thead>
     <tr>
@@ -14,35 +24,42 @@
         <th>delete</th>
     </tr>
     </thead>
-    <tbody>
     @foreach (var person in persons)
     {
         <tr>
-            @foreach (var column in person.GetType().GetProperties())
+            @if (editingPersonId == person.id)
             {
-                var value = column.GetValue(person);
-                if (value != null)
-                {
-                    <td>@value</td>
-                }
-                else
-                {
-                    <td>NULL</td>
-                }
+                <td>@person.id</td>
+                <td><input @bind="editFirstName" /></td>
+                <td><input @bind="editLastName" /></td>
+                <td>
+                    <button @onclick="() => SavePerson(person.id)">Save</button>
+                    <button @onclick="CancelEdit">Cancel</button>
+                </td>
             }
-            @{
-                var id = person.id;
+            else
+            {
+                <td>@person.id</td>
+                <td>@person.firstName</td>
+                <td>@person.lastName</td>
+                <td>
+                    <button @onclick="() => DeletePerson(person.id)">Delete</button>
+                    <button @onclick="() => StartEdit(person)">Edit</button>
+                </td>
             }
-            <td>
-                <button @onclick="() => DeletePerson(person.id)">Delete</button>
-                <button @onclick="() => Console.WriteLine(id)">Edit</button>
-            </td>
         </tr>
     }
-    </tbody>
+
 </table>
 
 @code{
+    private int? editingPersonId = null;
+    private string editFirstName = string.Empty;
+    private string editLastName = string.Empty;
+    
+    private string newFirstName = string.Empty;
+    private string newLastName = string.Empty;
+
     private List<Person> persons = new();
     string connectionString = "server=localhost;user=root;password=insy;database=mydb";
 
@@ -88,4 +105,102 @@
             Console.WriteLine($"Fehler beim Löschen: {ex.Message}");
         }
     }
+    private void StartEdit(Person person)
+    {
+        editingPersonId = person.id;
+        editFirstName = person.firstName;
+        editLastName = person.lastName;
+    }
+
+    private void CancelEdit()
+    {
+        editingPersonId = null;
+        editFirstName = string.Empty;
+        editLastName = string.Empty;
+    }
+
+    private async Task SavePerson(int id)
+    {
+        try
+        {
+            using var connection = new MySqlConnection(connectionString);
+            await connection.OpenAsync();
+
+            string updateQuery = "UPDATE Person SET firstName = @firstName, lastName = @lastName WHERE id = @id";
+            using var command = new MySqlCommand(updateQuery, connection);
+            command.Parameters.AddWithValue("@firstName", editFirstName);
+            command.Parameters.AddWithValue("@lastName", editLastName);
+            command.Parameters.AddWithValue("@id", id);
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            if (affectedRows > 0)
+            {
+                var person = persons.FirstOrDefault(p => p.id == id);
+                if (person != null)
+                {
+                    person.firstName = editFirstName;
+                    person.lastName = editLastName;
+                }
+                CancelEdit();
+                StateHasChanged();
+            }
+            else
+            {
+                Console.WriteLine("Update fehlgeschlagen.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Speichern: {ex.Message}");
+        }
+    }
+    private async Task AddPerson()
+    {
+        Console.WriteLine("AddPerson wurde aufgerufen");
+
+        if (string.IsNullOrWhiteSpace(newFirstName) || string.IsNullOrWhiteSpace(newLastName))
+        {
+            Console.WriteLine("Vorname und Nachname dürfen nicht leer sein.");
+            return;
+        }
+
+        try
+        {
+            using var connection = new MySqlConnection(connectionString);
+            await connection.OpenAsync();
+
+            string insertQuery = "INSERT INTO Person (firstName, lastName) VALUES (@firstName, @lastName)";
+            using var command = new MySqlCommand(insertQuery, connection);
+            command.Parameters.AddWithValue("@firstName", newFirstName);
+            command.Parameters.AddWithValue("@lastName", newLastName);
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            if (affectedRows > 0)
+            {
+                // Holen der ID des neuen Eintrags
+                long newId = command.LastInsertedId;
+
+                persons.Add(new Person
+                {
+                    id = (int)newId,
+                    firstName = newFirstName,
+                    lastName = newLastName
+                });
+
+                // Reset input
+                newFirstName = string.Empty;
+                newLastName = string.Empty;
+
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Hinzufügen: {ex.Message}");
+        }
+    }
+
+
 }

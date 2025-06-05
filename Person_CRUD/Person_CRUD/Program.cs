@@ -18,7 +18,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 app.UseAntiforgery();
 
 app.MapStaticAssets();
